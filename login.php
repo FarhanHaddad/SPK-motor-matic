@@ -4,21 +4,18 @@ require './includes/config.php';
 $page_title = 'login';
 $err = false;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['username'] = $_POST['username'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $req = $dbc->prepare('SELECT * FROM admin WHERE username = ?');
-    $req->bindParam(1, $_POST['username']);
-    $req->execute();
+    $query = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($dbc, $query);
 
-    if ($data = $req->fetch()) {
-        if (password_verify($_POST['password'], $data['password'])) {
-            $_SESSION['admin'] = true;
-            header('Location: index.php');
-            exit;
-        }
+    if (mysqli_num_rows($result) == 1) {
+        $_SESSION['username'] = true;
+        header("Location: index.php");
+        echo "Berhasil Login";
     }
-
     $err = true;
 }
 
@@ -26,9 +23,9 @@ include './includes/header.php';
 ?>
 
 <!--bootstrap-->
-    <link href="tampilan/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/slider.css" rel="stylesheet" type="text/css" media="all">
-    <link href="styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="tampilan/css/bootstrap.min.css" rel="stylesheet">
+<link href="styles/slider.css" rel="stylesheet" type="text/css" media="all">
+<link href="styles/layout.css" rel="stylesheet" type="text/css" media="all">
 
 
 <div class="col-md-4 col-md-offset-4">
@@ -38,13 +35,7 @@ include './includes/header.php';
     <form method="post">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" placeholder="username"
-            <?php
-            if (isset($_SESSION['username'])) {
-                echo "value = '$_SESSION[username]'";
-            }
-            ?>
-            >
+            <input type="text" class="form-control" name="username" placeholder="username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
@@ -54,6 +45,7 @@ include './includes/header.php';
     </form>
     <br />
     <p class="help-block">username: admin dan password: admin</p>
+
     <?php
     if ($err) {
         echo '<div class="alert alert-warning alert-dismissible" role="alert">
@@ -62,6 +54,7 @@ include './includes/header.php';
             </div>';
     }
     ?>
+
 </div>
 
 
