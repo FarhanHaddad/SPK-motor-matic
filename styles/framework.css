@@ -1,0 +1,170 @@
+html{
+	overflow-y:scroll; 
+	overflow-x:hidden;
+}
+html, body{
+	margin:0; 
+	padding:0; 
+	font-size:14px; 
+	line-height:1.6em;
+}
+
+*, *::before, *::after{box-sizing:border-box;}
+
+.bold{font-weight:bold;}
+.center{text-align:center;}
+.right{text-align:right;}
+.uppercase{text-transform:uppercase;}
+.capitalise{text-transform:capitalize;}
+.hidden{display:none;}
+.nospace{
+	margin:0; 
+	padding:0; 
+	list-style:none;
+}
+.block{display:block;}
+.justified{text-align:justify;}
+.inline *{display:inline-block;}
+.inline *:last-child{margin-right:0;}
+.borderedbox{border:1px solid;}
+
+.bgded{
+	background-position:top center; 
+	background-repeat:no-repeat; 
+	background-size:cover;
+}
+
+.icon{
+	display:inline-block; 
+	width:200px; 
+	height:200px; 
+	line-height:78px; 
+	border:1px solid; 
+	text-align:center; 
+	font-size:32px;
+}
+
+/*.clear, .group{display:block;}*/
+.clear::before, .clear::after, .group::before, .group::after{
+	display:table; 
+	content:"";
+}
+.clear, .clear::after, .group, .group::after{clear:both;}
+
+a{
+	outline:none; 
+	text-decoration:none;
+}
+
+.fl_left, .imgl{float:left;}
+.fl_right, .imgr{float:right;}
+
+img{
+	width:auto; 
+	max-width:100%; 
+	height:auto; 
+	margin:0; 
+	padding:0; 
+	border:none; 
+	line-height:normal; 
+	vertical-align:middle;
+}
+.imgl{margin:0 15px 10px 0; clear:left;}
+.imgr{margin:0 0 10px 15px; clear:right;}
+
+
+/* Fonts */
+body, input, select{font-family:Verdana, Geneva, sans-serif;}
+h1, h2, h3, h4, h5, h6, .heading{font-family:Georgia, "Times New Roman", Times, sans-serif;}
+
+
+/* Forms */
+form, fieldset, legend{
+	margin:0; 
+	padding:0; 
+	border:none;
+}
+
+/* Generalise */
+h1, h2, h3, h4, h5, h6{
+	margin:0 0 20px 0; 
+	font-size:22px; 
+	line-height:normal; 
+	font-weight:normal; 
+	text-transform:capitalize;
+}
+
+.font-xs{font-size:.8rem;}
+.font-x1{font-size:1.2rem;}
+.font-x2{font-size:1.8rem;}
+.font-x3{font-size:2.8rem;}
+
+.wrapper{
+	display:block; 
+	position:relative; 
+	width:100%; 
+	margin:0; 
+	padding:0; 
+	text-align:left; 
+	word-wrap:break-word;
+}
+.hoc{
+	display:block; 
+	margin:0 auto;
+}
+.logoweb{
+	margin-top: 10px;
+	margin-bottom: 5px;
+	width: 80%;
+}
+
+
+/* HTML 5 Overrides */
+
+/* Grid */
+.one_half, .one_third, .two_third, .two_quarter, .one_quarter, .three_quarter{
+	display:inline-block; 
+	float:left; 
+	margin:0 0 0 3.06748466257669%; 
+	list-style:none;
+}
+/*Foto Pudar*/
+.imgover{
+	display:inline-block; 
+	position:relative; 
+	max-width:100%;
+}
+.imgover::before, .imgover::after{
+	display:block; 
+	position:absolute; 
+	content:""; 
+	text-align:center; 
+	opacity:0;
+}
+.imgover::before{
+	top:0; 
+	right:0; 
+	bottom:0; 
+	left:0;
+}
+.imgover::after{
+	top:50%; 
+	left:50%; 
+	width:50px; 
+	height:50px; 
+	margin:-25px 0 0 -25px;  
+	font-size:28px;}
+
+.imgover:hover::before, .imgover:hover::after{opacity:1;}
+
+.first{
+	margin-left:0; 
+	clear:left;
+}
+
+.one_quarter{width:22.69938650306748%;}
+.one_third{width:31.28834355828221%;}
+.one_half, .two_quarter{width:48.46625766871166%;}
+.two_third{width:65.6441717791411%;}
+.three_quarter{width:74.23312883435584%;}
+
